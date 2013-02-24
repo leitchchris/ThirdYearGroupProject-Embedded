@@ -1,0 +1,16 @@
+If you are using the settings from the RN-171-XV setup instructions:
+
+Associate with the same wireless network or wire in to the same network.
+
+The module is set to communicate to 192.168.0.1:5000 and will recieve connections on 192.168.0.65:2000
+
+To open a TCP connection from the wifi module send the command "$$$" to go into command mode then send 
+the command "open 192.168.0.1 5000". This will open a TCP connection from the wifi module over wifi to 
+tge given ip address and port (open <IP ADDRESS> <PORT>). The string " *OPEN* " will be displayed on 
+the serial connection. The TCP connection that is now open will act as a wireless serial connection 
+and send all text sent to the port on the server side of the connection (with the exception of the 
+"$$$" required to enter command mode). 
+
+To close the TCP connection enter command mode using "$$$" and send the "close" command. The sting 
+" *CLOSE* " will be displayed after the connection closes.
+
