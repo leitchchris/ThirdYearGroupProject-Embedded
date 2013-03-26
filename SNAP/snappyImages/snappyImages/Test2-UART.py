@@ -55,3 +55,15 @@ def talkToSerial(): #sends any text input out to the serial connection
     
 def closeSerial(): #Should close the TCP connection if you run 'enterCommandMode()' first while a connection is open
     print'close' 
+    
+def remoteLedRed():
+    print'Red LEDs'
+    rpc('\x04\x35\x1D', 'RedLedPulse')
+    
+def remoteLedGreen():
+    print'Green LEDs'
+    rpc('\x04\x35\x1D', 'GreenLedPulse')
+    
+def remoteLedBlue():
+    print' Blue LEDs'
+    rpc('\x04\x35\x1D', 'BlueLedPulse')

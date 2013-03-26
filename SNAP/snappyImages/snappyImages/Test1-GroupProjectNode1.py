@@ -31,6 +31,9 @@ NodeNum = "1"
 numbuttonpresses =0
 photoVal =0
 tiltcount = 0
+redTriggered = 0
+blueTriggered = 0
+greenTriggered = 0
 
 Nodestr = " Node" + NodeNum + " :   "
 
@@ -72,13 +75,12 @@ def buttonEvent(pin,isSet):
 
 @setHook(HOOK_1S)
 def updateSensors():
-    global photoVal, numbuttonpresses, tiltcount 
+    global photoVal, numbuttonpresses, tiltcount
    
     ReadSensors()
     
     # Send the sensor data to the Portal event log 
-    eventString = Nodestr + "   Tilts >> " + str(tiltcount) + "   Photocell >> " + str(photoVal)  
-
+    eventString = Nodestr + "   Tilts >> " + str(tiltcount) + "   Photocell >> " + str(photoVal) 
     rpc(portalAddr, "logEvent", eventString)
 
 
@@ -89,10 +91,22 @@ def ReadSensors():
     photoVal = readAdc(2)           # Read photosensor on GPIO16
     
 def GreenLedPulse():
+    global greenTriggered
     pulsePin(GREEN_LED, 500, False)
+    greenTriggered += 1
+    eventString = "  Green Led Triggered >> " + str(greenTriggered)
+    rpc(portalAddr, "logEvent", eventString)
     
 def RedLedPulse():
+    global redTriggered
     pulsePin(RED_LED, 500, False)
+    redTriggered += 1
+    eventString = "Red Led Triggered >> " + str(redTriggered)
+    rpc(portalAddr, "logEvent", eventString)
     
 def BlueLedPulse():
+    global blueTriggered
     pulsePin(BLUE_LED, 500, False)
+    blueTriggered += 1
+    eventString = "  Blue Led Triggered >> " + str(blueTriggered)
+    rpc(portalAddr, "logEvent", eventString)
