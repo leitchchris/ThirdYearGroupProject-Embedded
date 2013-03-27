@@ -1,6 +1,6 @@
 """
   Author			: Chris Leitch  
-  Last Modified 	: 05 March 2013       Created  :  05 March 2013
+  Last Modified 	: 25 March 2013       Created  :  05 March 2013
   File			    : Test1-GroupProject.py
   Target Hardware	: Synapse Wireless - RF100 
   Firmware Version	: 2.4.19
@@ -32,38 +32,48 @@ def init():
     stdinMode(0, False)
     
 @setHook(HOOK_STDIN)
-def inputFromSerial(dataIn):
-    if dataIn=='*OPEN*':
-        print dataIn
-    elif dataIn=='*open*':
-        #This instead
-        print'boogiedoo'
+def stdinEvent(dataIn):
+    if dataIn == 'Blue.':
+        rpc('\x04\x35\x1D','BluePulseLed')
+        
 
 def rebootWiFly(): #reboots the RN-171-XV module
     print'reboot'     
     
+
 def enterCommandMode(): #activates command mode on the RN-171-XV module
     print'$$$',
     print'',
     
+
 def openOutputToSerial():  #opens tcp connection to the given ip address and port
-    print"open 192.168.0.3 5000"
+    print"open 192.168.0.2 5000"
     
+
 def talkToSerial(): #sends any text input out to the serial connection
     print'helllllllllllllllllooooooooooooooooo'  
     print'*OPEN*'
     
+
 def closeSerial(): #Should close the TCP connection if you run 'enterCommandMode()' first while a connection is open
     print'close' 
     
+
 def remoteLedRed():
     print'Red LEDs'
     rpc('\x04\x35\x1D', 'RedLedPulse')
     
-def remoteLedGreen():
+
+def remoteLedGreenOn():
     print'Green LEDs'
-    rpc('\x04\x35\x1D', 'GreenLedPulse')
+    rpc('\x04\x35\x1D', 'GreenLedOff')
     
+
+def remoteLedGreenOff():
+    print'Green LEDs'
+    rpc('\x04\x35\x1D', 'GreenLedOff')
+    
+
 def remoteLedBlue():
     print' Blue LEDs'
     rpc('\x04\x35\x1D', 'BlueLedPulse')
