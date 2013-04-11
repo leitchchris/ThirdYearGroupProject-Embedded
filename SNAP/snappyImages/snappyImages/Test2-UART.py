@@ -33,9 +33,12 @@ def init():
     
 @setHook(HOOK_STDIN)
 def stdinEvent(dataIn):
-    if dataIn == 'Blue.':
-        rpc('\x04\x35\x1D','BluePulseLed')
+    if len(dataIn) == 6:
+        if dataIn == 'BlueOn':
+            rpc('\x04\x35\x1D','BluePulseLed')
+            dataIn = ''
         
+    dataIn = ''
 
 def rebootWiFly(): #reboots the RN-171-XV module
     print'reboot'     
@@ -47,7 +50,7 @@ def enterCommandMode(): #activates command mode on the RN-171-XV module
     
 
 def openOutputToSerial():  #opens tcp connection to the given ip address and port
-    print"open 192.168.0.2 5000"
+    print"open 192.168.0.1 5000"
     
 
 def talkToSerial(): #sends any text input out to the serial connection
@@ -66,7 +69,7 @@ def remoteLedRed():
 
 def remoteLedGreenOn():
     print'Green LEDs'
-    rpc('\x04\x35\x1D', 'GreenLedOff')
+    rpc('\x04\x35\x1D', 'GreenLedOn')
     
 
 def remoteLedGreenOff():
@@ -75,5 +78,5 @@ def remoteLedGreenOff():
     
 
 def remoteLedBlue():
-    print' Blue LEDs'
+    print'Blue LEDs'
     rpc('\x04\x35\x1D', 'BlueLedPulse')

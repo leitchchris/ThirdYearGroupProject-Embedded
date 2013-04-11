@@ -86,7 +86,6 @@ def updateSensors():
 def ReadSensors():
     """This reads ADC Channels  """
     global photoVal
-
     photoVal = readAdc(2)           # Read photosensor on GPIO16
     
 
