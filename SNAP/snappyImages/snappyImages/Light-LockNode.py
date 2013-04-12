@@ -72,7 +72,7 @@ def buttonEvent(pin,isSet):
         pulsePin(RED_LED, 1000, False)
         
 
-@setHook(HOOK_60S)
+@setHook(HOOK_1S)
 def updateSensors():
     global photoVal, numbuttonpresses, tiltcount
    

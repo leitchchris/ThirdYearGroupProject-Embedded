@@ -44,7 +44,7 @@ def stdinEvent(data):
         remoteLedBlue()
         
     elif data == 'pulseRed':
-        remoteLedRed
+        remoteLedRed()
     
     dataIn = ''
 
