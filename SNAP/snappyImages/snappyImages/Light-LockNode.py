@@ -21,7 +21,7 @@ GREEN_LED   = GPIO_2
 RED_LED = GPIO_1
 BLUE_LED  = GPIO_0
 
-BUTTON_PIN  = GPIO_5
+Light = GPIO_4
 TiltSwitch1 = GPIO_15
 
 NodeNum = "1"
@@ -61,13 +61,13 @@ def buttonEvent(pin,isSet):
 
 def GreenLedOn():
     writePin(GREEN_LED, False)
-    eventString = "  Green Led On "
+    eventString = "  Green Led On"
     rpc(portalAddr, "logEvent", eventString)
     
 
 def GreenLedOff():
     writePin(GREEN_LED, True)
-    eventString = "  Green Led Off "
+    eventString = "  Green Led Off"
     rpc(portalAddr, "logEvent", eventString)   
     
 
@@ -83,3 +83,14 @@ def BlueLedPulse():
     blueTriggered += 1
     eventString = "  Blue Led Triggered >> " + str(blueTriggered)
     rpc(portalAddr, "logEvent", eventString)
+    
+def lightOn():
+    writePin(Light, False)
+    eventString = "  Lamp On"
+    rpc(portalAddr, "logEvent", eventString)
+    
+def lightOff():
+    writePin(Light, True)
+    eventString = "  Lamp On"
+    rpc(portalAddr, "logEvent", eventString)
+

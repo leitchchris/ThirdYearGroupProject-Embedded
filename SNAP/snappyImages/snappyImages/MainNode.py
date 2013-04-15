@@ -58,6 +58,10 @@ def stdinEvent(data):
     dataIn = ''
     
 
+def enterCommandMode(): #activates command mode on the RN-171-XV module
+    print'$$$',
+    print'',
+    
 def rebootWiFly(): #reboots the RN-171-XV module
     print'reboot'     
     
