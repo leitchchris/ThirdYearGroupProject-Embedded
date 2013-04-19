@@ -21,7 +21,7 @@ GREEN_LED   = GPIO_2
 RED_LED = GPIO_1
 BLUE_LED  = GPIO_0
 
-Light = GPIO_4
+Light = GPIO_3
 TiltSwitch1 = GPIO_15
 
 NodeNum = "1"
