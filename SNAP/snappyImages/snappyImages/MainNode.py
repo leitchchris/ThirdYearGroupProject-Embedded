@@ -1,7 +1,7 @@
 """
   Author			: Chris Leitch  
-  Last Modified 	: 12 April 2013       Created  :  05 March 2013
-  File			    : Test1-GroupProject.py
+  Last Modified 	: 20 April 2013       Created  :  05 March 2013
+  File			    : MainNode.py
   Target Hardware	: Synapse Wireless - RF100 
   Firmware Version	: 2.4.19
   Version		    : 1.0.0
@@ -22,14 +22,13 @@ portalAddr   = '\x00\x00\x09'     # hard-coded address for Portal
 nodeAddr = '\x04\x35\x1D'
 
 @setHook(HOOK_STARTUP)
-def init():
-    """This is hooked into the HOOK_STARTUP event"""  
+def init(): 
     
     #initialise the uart
     initUart(1, 57600)
     crossConnect(DS_STDIO, DS_UART1)
     
-    #setup for STDIN
+    #setup for STDIN (serial)
     stdinMode(0, True)
     
 @setHook(HOOK_STDIN)

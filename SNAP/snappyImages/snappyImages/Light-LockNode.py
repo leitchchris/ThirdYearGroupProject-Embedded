@@ -1,7 +1,7 @@
 """
   Author			: Chris Leitch  
-  Last Modified 	: 12 April 2013       Created  :  05 March 2013
-  File			    : Test1-GroupProject.py
+  Last Modified 	: 20 April 2013       Created  :  05 March 2013
+  File			    : Light-LockNode.py
   Target Hardware	: Synapse Wireless - RF100 
   Firmware Version	: 2.4.19
   Version		    : 1.0.0
@@ -41,7 +41,7 @@ def startupEvent():
     setPinDir(BLUE_LED, True)
     setPinDir(RED_LED, True)
              
-    # Set tilt and pushbutton as input, and set the HOOK_GPIN invocation when they change state    
+    # Set tilt as input, and set the HOOK_GPIN invocation when they change state    
     setPinDir(TiltSwitch1 ,False)
     monitorPin(TiltSwitch1,True)
     
@@ -55,18 +55,21 @@ def buttonEvent(pin,isSet):
     
     if (pin == TiltSwitch1) and isSet:    # If event is caused by the tiltswitch
         tiltcount += 1
-        pulsePin(GREEN_LED, 500, False) 
-        pulsePin(RED_LED, 1000, False)
-    
-
+        pulsePin(BLUE_LED, 200, False) 
+        pulsePin(RED_LED, 200, False)
+        pulsePin(BLUE_LED, 200, False) 
+        pulsePin(RED_LED, 200, False)
+        pulsePin(BLUE_LED, 200, False) 
+        pulsePin(RED_LED, 200, False)
+		
 def GreenLedOn():
-    writePin(GREEN_LED, False)
-    eventString = "  Green Led On"
-    rpc(portalAddr, "logEvent", eventString)
+    writePin(GREEN_LED, False)					#sets the pin the green led is connected to as high
+    eventString = "  Green Led On"				#creates a event string containing given wording
+	rpc(portalAddr, "logEvent", eventString)	#remote calls the "logEvent" on the portal node for debugging
     
 
 def GreenLedOff():
-    writePin(GREEN_LED, True)
+    writePin(GREEN_LED, True)					#sets the pin the green led is connected to as low
     eventString = "  Green Led Off"
     rpc(portalAddr, "logEvent", eventString)   
     
