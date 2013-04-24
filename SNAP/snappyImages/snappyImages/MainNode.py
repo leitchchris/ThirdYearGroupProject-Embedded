@@ -1,6 +1,6 @@
 """
   Author			: Chris Leitch  
-  Last Modified 	: 20 April 2013       Created  :  05 March 2013
+  Last Modified 	: 24 April 2013       Created  :  05 March 2013
   File			    : MainNode.py
   Target Hardware	: Synapse Wireless - RF100 
   Firmware Version	: 2.4.19
@@ -54,6 +54,12 @@ def stdinEvent(data):
     elif data == 'light':
         lightReadings()
         
+    elif data == 'lightOn':
+        remoteLightOn()
+        
+    elif data == 'lightOff':
+        remoteLightOff()
+            
     dataIn = ''
     
 
@@ -92,3 +98,11 @@ def remoteLedGreenOff():
 def remoteLedBlue():
     print'Blue LEDs'
     rpc(nodeAddr, 'BlueLedPulse')
+    
+def remoteLightOn():
+    print 'Light On'
+    rpc(nodeAddr, 'LightOn')
+    
+def remoteLightOff():
+    print 'Light Off'
+    rpc(nodeAddr, 'LightOff')
