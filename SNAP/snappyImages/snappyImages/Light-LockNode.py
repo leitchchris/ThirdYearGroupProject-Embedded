@@ -21,15 +21,18 @@ BLUE_LED  = GPIO_0
 RED_LED = GPIO_1
 GREEN_LED   = GPIO_2
 Light = GPIO_3
+Servo = GPIO_4
 TiltSwitch1 = GPIO_15
 
 @setHook(HOOK_STARTUP)
 def startupEvent(): 
     
-    # Set GPIOs for LEDs as outputs
+    # Set GPIOs for control as outputs
     setPinDir(GREEN_LED, True) 
     setPinDir(BLUE_LED, True)
     setPinDir(RED_LED, True)
+    setPinDir(Light, True)
+    setPinDir(Servo, True)
              
     # Set tilt as input, and set the HOOK_GPIN invocation when they change state    
     setPinDir(TiltSwitch1 ,False)
@@ -84,6 +87,15 @@ def LightOn():
     
 def LightOff():
     writePin(Light, True)
-    eventString = "  Lamp On"
+    eventString = "  Lamp Off"
     rpc(portalAddr, "logEvent", eventString)
 
+def ServoOn():
+    writePin(Servo, False)
+    eventString = "  Servo On"
+    rpc(portalAddr, "logEvent", eventString)
+    
+def ServoOff():
+    writePin(Servo, True)
+    eventString = "  Servo Off"
+    rpc(portalAddr, "logEvent", eventString)

@@ -60,6 +60,12 @@ def stdinEvent(data):
     elif data == 'lightOff':
         remoteLightOff()
             
+    elif data == 'servoOn':
+        servoOn()
+        
+    elif data == 'servoOff':
+        servoOff()
+    
     dataIn = ''
     
 
@@ -106,3 +112,11 @@ def remoteLightOn():
 def remoteLightOff():
     print 'Light Off'
     rpc(nodeAddr, 'LightOff')
+    
+def servoOn():
+    print 'Servo On'
+    rpc(nodeAddr, 'ServoOn')
+    
+def servoOff():
+    print 'Servo Off'
+    rpc(nodeAddr, 'ServoOff')
