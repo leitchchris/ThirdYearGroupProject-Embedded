@@ -2,23 +2,23 @@
 
 Once connected over either local com port or wifi in adhoc mode
 
-$$$		 	- Enters command mode
+$$$		- Enters command mode
 factory R	- factory reset to get the module to a known config (baud rate 9600)
 reboot		- to restart the module to make new settings active
-$$$		 	- Enters command mode after restart
+$$$		- Enters command mode after restart
 
 scan 		- Scan for wifi networks (just to make sure the network you want is in range/boradcasting)
 
 (set up a persistent network)
 set wlan ssid ThirdYearGroupProject     - sets ssid to connect to
 set wlan pass ThirdYearGroupProject 	- sets network password/key
-set ip address 192.168.0.65 			- sets wifly ip to given ip
-set ip dhcp 0 	 						- turns DHCP off. The module uses its stored static IP address. 
-set ip gateway 192.168.0.254 			- sets the gateway/router IP address
-set ip netmask 255.255.255.0			- sets the netmask of the network 
-set ip host 192.168.0.1					- sets the ip address the wifly will attempt to comminicate with
-set ip remote 5000						- sets the remote computers port number (as per set ip host address)
-set uart baud 57600						- sets the baud rate of the uart connection to 57600
+set ip address 192.168.0.65 		- sets wifly ip to given ip
+set ip dhcp 0 	 			- turns DHCP off. The module uses its stored static IP address. 
+set ip gateway 192.168.0.254 		- sets the gateway/router IP address
+set ip netmask 255.255.255.0		- sets the netmask of the network 
+set ip host 192.168.0.1			- sets the ip address the wifly will attempt to comminicate with
+set ip remote 5000			- sets the remote computers port number (as per set ip host address)
+set uart baud 57600			- sets the baud rate of the uart connection to 57600
 
 **************TESTING WiFi PHASE!!!****************************
 
